@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -6,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reactive-form.component.css']
 })
 export class ReactiveFormComponent implements OnInit {
+  public registrationForm = new FormGroup({
+    userName: new FormControl('Waylon'),
+    password: new FormControl(''),
+    confirmPassword: new FormControl('')
+  });
 
   constructor() { }
 
