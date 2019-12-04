@@ -23,4 +23,24 @@ export class ReactiveFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  loadApiData(){
+    this.registrationForm.setValue({
+      userName: 'Waylon',
+      password: 'test',
+      confirmPassword: 'test',
+      address: {
+        city: 'Scottsdale',
+        state: 'AZ',
+        zipCode: '85254'
+      }
+    });
+  }
+
+  loadPartialAidData(){
+    this.registrationForm.patchValue({
+      userName: 'Who',
+      password: 'test',
+      confirmPassword: 'test'
+    });
+  }
 }

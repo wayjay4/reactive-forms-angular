@@ -32,7 +32,14 @@
       </div>
     </div>
 
-    <button class="btn btn-primary" type="submit">Register</button>
+    <p><button class="btn btn-primary ml-2" type="submit">Register</button></p>
+    <p><button (click)="loadApiData()" class="btn btn-secondary ml-2">Load API Data</button></p>
+    <p><button (click)="loadPartialAidData()" class="btn btn-secondary ml-2">Load Partial API Data</button></p>
   </form>
-  {{registrationForm.value | json}}
+
+  <div>
+    <p style="margin:25px;">
+      {{registrationForm.value | json}}
+    </p>
+  </div>
 </div>
