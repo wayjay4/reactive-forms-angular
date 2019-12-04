@@ -6,7 +6,7 @@ import { ReactiveFormComponent } from './components/reactive-form/reactive-form.
 
 const routes: Routes = [
   { path: '', redirectTo: '/reactive-form', pathMatch: 'full' },
-  { path: '', component: HomePageComponent },
+  { path: 'home-page', component: HomePageComponent },
   { path: 'reactive-form', component: ReactiveFormComponent },
   { path: '**', component: PageNotFoundComponent }  // Note: 'wildcard' route should be the last in the routing list
 ];

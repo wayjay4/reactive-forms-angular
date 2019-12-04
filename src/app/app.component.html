@@ -1,10 +1,16 @@
 
-<h3>Reactive Forms App using Angular</h3>
+<div class="container-fluid">
+  <h3>Reactive Forms App using Angular</h3>
 
-<nav>
-  <a routerLink="/" routerLinkActive="active">Home</a>
-  |
-  <a routerLink="/reactive-form" routerLinkActive="active">Reactive Form</a>
-</nav>
+  <nav>
+    <a routerLink="/home-page" routerLinkActive="active">Home</a>
+    |
+    <a routerLink="/reactive-form" routerLinkActive="active">Reactive Form</a>
+  </nav>
 
-<router-outlet></router-outlet>
+  <main>
+    <div class="main-body">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
