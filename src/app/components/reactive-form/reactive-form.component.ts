@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { forbiddonNameValidator } from '../../shared/user-name.validator';
+import { PasswordValidator } from '../../shared/password.validator';
 
 @Component({
   selector: 'app-reactive-form',
@@ -10,14 +11,14 @@ import { forbiddonNameValidator } from '../../shared/user-name.validator';
 export class ReactiveFormComponent implements OnInit {
   public registrationForm = this.fb.group({
     userName: ['', [Validators.required, Validators.minLength(3), forbiddonNameValidator(/password/)]],
-    password: ['test'],
-    confirmPassword: ['test'],
+    password: [''],
+    confirmPassword: [''],
     address: this.fb.group({
       city: [''],
       state: [''],
       zipCode: ['']
     })
-  });
+  }, {validator: PasswordValidator});
 
   get userName(){
     return this.registrationForm.get('userName');
