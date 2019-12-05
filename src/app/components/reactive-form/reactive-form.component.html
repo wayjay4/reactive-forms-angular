@@ -24,6 +24,12 @@
         >
           Username must be at least 3 characters.
         </small>
+        <small
+          class="text-danger"
+          *ngIf="userName.errors?.forbiddenName"
+        >
+          Username cannot be '{{userName.errors?.forbiddenName.value}}'.
+        </small>
       </div>
     </div>
 
