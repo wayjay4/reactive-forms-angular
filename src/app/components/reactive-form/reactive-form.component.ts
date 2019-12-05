@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
-import { forbiddonNameValidator } from '../../shared/user-name.validator';
+import { forbiddenNameValidator } from '../../shared/user-name.validator';
 import { PasswordValidator } from '../../shared/password.validator';
 import { RegistrationService } from '../../services/registration.service';
 
@@ -32,7 +32,7 @@ export class ReactiveFormComponent implements OnInit {
 
   ngOnInit() {
     this.registrationForm = this.fb.group({
-      userName: ['', [Validators.required, Validators.minLength(3), forbiddonNameValidator(/password/)]],
+      userName: ['', [Validators.required, Validators.minLength(3), forbiddenNameValidator(/password/)]],
       email: [''],
       subscribe: [false],
       password: [''],
@@ -63,13 +63,16 @@ export class ReactiveFormComponent implements OnInit {
   loadApiData(){
     this.registrationForm.setValue({
       userName: 'Waylon',
+      email: '',
+      subscribe: '',
       password: 'test',
       confirmPassword: 'test',
       address: {
         city: 'Scottsdale',
         state: 'AZ',
         zipCode: '85254'
-      }
+      },
+      alternateEmails: []
     });
   }
 
