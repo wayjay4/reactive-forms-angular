@@ -9,26 +9,45 @@ import { PasswordValidator } from '../../shared/password.validator';
   styleUrls: ['./reactive-form.component.css']
 })
 export class ReactiveFormComponent implements OnInit {
-  public registrationForm = this.fb.group({
-    userName: ['', [Validators.required, Validators.minLength(3), forbiddonNameValidator(/password/)]],
-    email: [''],
-    subscribe: [false],
-    password: [''],
-    confirmPassword: [''],
-    address: this.fb.group({
-      city: [''],
-      state: [''],
-      zipCode: ['']
-    })
-  }, {validator: PasswordValidator});
+  public registrationForm: formGroup;
 
   get userName(){
     return this.registrationForm.get('userName');
   }
 
+  get email(){
+    return this.registrationForm.get('email');
+  }
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.registrationForm = this.fb.group({
+      userName: ['', [Validators.required, Validators.minLength(3), forbiddonNameValidator(/password/)]],
+      email: [''],
+      subscribe: [false],
+      password: [''],
+      confirmPassword: [''],
+      address: this.fb.group({
+        city: [''],
+        state: [''],
+        zipCode: ['']
+      })
+    }, {validator: PasswordValidator});
+
+    this.registrationForm.get('subscribe').valueChanges
+      .subscribe(checkedValue => {
+        const email = this.registrationForm.get('email');
+
+        if(checkedValue){
+          email.setValidators(Validators.required);
+        }
+        else{
+          email.clearValidators();
+        }
+
+        email.updateValueAndValidity();
+      });
   }
 
   loadApiData(){
