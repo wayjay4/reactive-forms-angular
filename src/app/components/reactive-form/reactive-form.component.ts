@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -8,9 +8,9 @@ import { FormBuilder } from '@angular/forms';
 })
 export class ReactiveFormComponent implements OnInit {
   public registrationForm = this.fb.group({
-    userName: ['Waylon'],
-    password: [''],
-    confirmPassword: [''],
+    userName: ['', Validators.required],
+    password: ['test'],
+    confirmPassword: ['test'],
     address: this.fb.group({
       city: [''],
       state: [''],
@@ -42,5 +42,10 @@ export class ReactiveFormComponent implements OnInit {
       password: 'test',
       confirmPassword: 'test'
     });
+  }
+
+  onSubmit(){
+    // TODO: use EventEmitter with form value
+    console.warn(this.registrationForm.value);
   }
 }
