@@ -11,6 +11,8 @@ import { PasswordValidator } from '../../shared/password.validator';
 export class ReactiveFormComponent implements OnInit {
   public registrationForm = this.fb.group({
     userName: ['', [Validators.required, Validators.minLength(3), forbiddonNameValidator(/password/)]],
+    email: [''],
+    subscribe: [false],
     password: [''],
     confirmPassword: [''],
     address: this.fb.group({
