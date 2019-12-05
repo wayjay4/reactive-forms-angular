@@ -9,7 +9,7 @@ import { forbiddonNameValidator } from '../../shared/user-name.validator';
 })
 export class ReactiveFormComponent implements OnInit {
   public registrationForm = this.fb.group({
-    userName: ['', [Validators.required, Validators.minLength(3), forbiddonNameValidator]],
+    userName: ['', [Validators.required, Validators.minLength(3), forbiddonNameValidator(/password/)]],
     password: ['test'],
     confirmPassword: ['test'],
     address: this.fb.group({
