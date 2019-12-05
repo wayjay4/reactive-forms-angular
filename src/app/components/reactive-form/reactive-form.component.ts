@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { forbiddonNameValidator } from '../../shared/user-name.validator';
 import { PasswordValidator } from '../../shared/password.validator';
+import { RegistrationService } from '../../services/registration.service';
 
 @Component({
   selector: 'app-reactive-form',
@@ -27,7 +28,7 @@ export class ReactiveFormComponent implements OnInit {
     this.alternateEmails.push(this.fb.control(''));
   }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private _registrationService: RegistrationService) { }
 
   ngOnInit() {
     this.registrationForm = this.fb.group({
@@ -83,5 +84,11 @@ export class ReactiveFormComponent implements OnInit {
   onSubmit(){
     // TODO: use EventEmitter with form value
     console.warn(this.registrationForm.value);
+
+    this._registrationService.register(this.registrationForm.value)
+      .subscribe(
+        response => console.log('Success!', response),
+        error => console.error('Error!', error)
+      );
   }
 }
