@@ -18,6 +18,10 @@ export class ReactiveFormComponent implements OnInit {
     })
   });
 
+  get userName(){
+    return this.registrationForm.get('userName');
+  }
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
